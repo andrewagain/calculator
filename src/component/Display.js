@@ -4,7 +4,9 @@ class Display extends React.Component {
   render() {
     return (
       <div>
-        Welcome to Display
+        <div>
+          117
+        </div>
       </div>
     );
   }
