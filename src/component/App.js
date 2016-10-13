@@ -19,7 +19,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="component-app">
         <Display
           value={this.state.next || this.state.total || '0'}
         />

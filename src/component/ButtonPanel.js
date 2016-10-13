@@ -8,7 +8,7 @@ class ButtonPanel extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="component-button-panel">
         <div>
           <Button name="AC" clickHandler={this.handleClick} />
           <Button name="+/-" clickHandler={this.handleClick} />
