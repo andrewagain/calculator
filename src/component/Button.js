@@ -1,9 +1,15 @@
 import React from 'react';
 
 class Button extends React.Component {
+  handleClick = () => {
+    console.log('click');
+  }
+
   render() {
     return (
-      <button>
+      <button
+        onClick={this.handleClick}
+      >
         {this.props.name}
       </button>
     );
