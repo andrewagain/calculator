@@ -1,5 +1,15 @@
+html {
+  height: 100%;
+}
+
 body {
+  background-color: black;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
 }
