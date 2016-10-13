@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import './ButtonPanel.css';
 
 class ButtonPanel extends React.Component {
   handleClick = (buttonName) => {
