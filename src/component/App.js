@@ -6,7 +6,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Display />
+        <Display
+          value="117"
+        />
         <ButtonPanel />
       </div>
     );

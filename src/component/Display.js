@@ -5,10 +5,13 @@ class Display extends React.Component {
     return (
       <div>
         <div>
-          117
+          {this.props.value}
         </div>
       </div>
     );
   }
 }
+Display.propTypes = {
+  value: React.PropTypes.string,
+};
 export default Display;
