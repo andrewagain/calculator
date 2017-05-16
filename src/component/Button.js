@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Button.css';
 
 class Button extends React.Component {
@@ -29,9 +30,9 @@ class Button extends React.Component {
   }
 }
 Button.propTypes = {
-  name: React.PropTypes.string,
-  orange: React.PropTypes.bool,
-  wide: React.PropTypes.bool,
-  clickHandler: React.PropTypes.func,
+  name: PropTypes.string,
+  orange: PropTypes.bool,
+  wide: PropTypes.bool,
+  clickHandler: PropTypes.func,
 };
 export default Button;
