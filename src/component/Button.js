@@ -8,17 +8,16 @@ class Button extends React.Component {
   }
 
   render() {
-    let className = "component-button";
-    if (this.props.orange) {
-      className += " orange";
-    }
-    if (this.props.wide) {
-      className += " wide";
-    }
+    
+    const className = [
+      "component-button",
+      this.props.orange ? "orange" : "",
+      this.props.wide ? "wide" : "",
+    ];
 
     return (
       <div
-        className={className}
+        className={className.join(" ").trim()}
       >
         <button
           onClick={this.handleClick}
