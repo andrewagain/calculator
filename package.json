@@ -4,14 +4,14 @@
   "private": true,
   "homepage": "http://ahfarmer.github.io/calculator",
   "devDependencies": {
-    "gh-pages": "^0.11.0",
-    "react-scripts": "0.4.1"
+    "gh-pages": "^1.1.0",
+    "react-scripts": "^1.0.17"
   },
   "dependencies": {
-    "big.js": "^3.1.3",
+    "big.js": "^5.0.3",
     "github-fork-ribbon-css": "^0.2.1",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
