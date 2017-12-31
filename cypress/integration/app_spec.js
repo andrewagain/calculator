@@ -11,5 +11,11 @@ describe('App', () => {
     mount(<App />)
   })
 
-  it('loads calculator', () => {})
+  it('computes', () => {
+    cy.contains('.component-button', '7').click()
+    cy.contains('button', 'x').click()
+    cy.contains('.component-button', '2').click()
+    cy.contains('button', '=').click()
+    cy.contains('.component-display', '14')
+  })
 })

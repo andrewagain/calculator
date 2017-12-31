@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Button.css';
+import './Button.css'
 
 class Button extends React.Component {
   handleClick() {
@@ -16,7 +16,7 @@ class Button extends React.Component {
 
     return (
       <div className={className.join(' ').trim()}>
-        <button onClick={this.handleClick}>{this.props.name}</button>
+        <button onClick={this.handleClick.bind(this)}>{this.props.name}</button>
       </div>
     )
   }

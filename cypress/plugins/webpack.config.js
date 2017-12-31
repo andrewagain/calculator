@@ -1,5 +1,6 @@
 module.exports = {
   module: {
+    strictExportPresence: true,
     rules: [
       {
         test: /\.jsx?$/,
