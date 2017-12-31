@@ -4,9 +4,13 @@
   "private": true,
   "homepage": "http://ahfarmer.github.io/calculator",
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "^1.1.2",
+    "babel-loader": "^7.1.2",
+    "css-loader": "^0.28.7",
+    "cypress": "1.4.1",
     "gh-pages": "^1.1.0",
     "react-scripts": "^1.0.17",
-    "cypress": "1.4.1"
+    "style-loader": "^0.19.1"
   },
   "dependencies": {
     "big.js": "^5.0.3",
@@ -26,4 +30,3 @@
     "extends": "./node_modules/react-scripts/config/eslint.js"
   }
 }
-
