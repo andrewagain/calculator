@@ -18,9 +18,29 @@ const result = () => cy.get('.component-display')
 describe('App', () => {
   beforeEach(() => {
     mount(<App />)
+    debugger
   })
 
-  it('multiplies', () => {
+  it('shows 7', () => {
+    cy.contains('.component-button', '7').click()
+    cy.contains('.component-display', '7')
+  })
+
+  it('shows 8', () => {
+    cy.contains('.component-button', '8').click()
+    cy.contains('.component-display', '8')
+  })
+
+  it.skip('multiplies', () => {
+    // the simplest test without any helper functions
+    cy.contains('.component-button', '7').click()
+    // cy.contains('button', 'x').click()
+    // cy.contains('.component-button', '2').click()
+    // cy.contains('button', '=').click()
+    // cy.contains('.component-display', '14')
+  })
+
+  it.skip('multiplies 2', () => {
     // the simplest test without any helper functions
     cy.contains('.component-button', '7').click()
     cy.contains('button', 'x').click()
@@ -29,16 +49,7 @@ describe('App', () => {
     cy.contains('.component-display', '14')
   })
 
-  it('multiplies 2', () => {
-    // the simplest test without any helper functions
-    cy.contains('.component-button', '7').click()
-    cy.contains('button', 'x').click()
-    cy.contains('.component-button', '2').click()
-    cy.contains('button', '=').click()
-    cy.contains('.component-display', '14')
-  })
-
-  it('computes modulo', () => {
+  it.skip('computes modulo', () => {
     // lets use "page functions"
     press('2')
     press('5')
