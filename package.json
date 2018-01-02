@@ -8,6 +8,7 @@
     "babel-loader": "^7.1.2",
     "css-loader": "^0.28.7",
     "cypress": "1.4.1",
+    "cypress-react-unit-test": "1.0.0",
     "gh-pages": "^1.1.0",
     "react-scripts": "^1.0.17",
     "style-loader": "^0.19.1"
