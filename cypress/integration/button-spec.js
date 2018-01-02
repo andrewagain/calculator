@@ -1,7 +1,3 @@
-// import styles same way as `src/index.js` - they describe
-// the HTML page style
-// import '../../src/index.css'
-
 import { mount } from 'cypress-react-unit-test'
 import Button from '../../src/component/Button'
 import React from 'react'
