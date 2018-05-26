@@ -15,8 +15,5 @@ export default function operate(numberOne, numberTwo, operation) {
   if (operation === '÷') {
     return one.div(two).toString();
   }
-  if (operation === '%') {
-    return one.mod(two).toString();
-  }
   throw Error(`Unknown operation '${operation}'`);
 }

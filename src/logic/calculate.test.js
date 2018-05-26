@@ -1,5 +1,10 @@
 import calculate from './calculate';
-import { expect } from 'chai';
+import chai from 'chai';
+
+// https://github.com/chaijs/chai/issues/469
+chai.config.truncateThreshold = 0
+
+const expect = chai.expect;
 
 function pressButtons(buttons) {
   const value = {};
@@ -129,3 +134,22 @@ test(['.', '4', '-', '.', '2', '='], {
 // should clear the operator when AC is pressed
 test(['1', '+', '2', 'AC'], {});
 test(['+', '2', 'AC'], {});
+
+test(['4', '%'], {
+  next: '0.04',
+});
+
+test(['4', '%', 'x', '2', '='], {
+  total: '0.08',
+});
+
+test(['4', '%', 'x', '2'], {
+  total: '0.04',
+  operation: 'x',
+  next: '2',
+});
+
+// the percentage sign should also act as '='
+test(['2', 'x', '2', '%'], {
+  total: '0.04',
+});
