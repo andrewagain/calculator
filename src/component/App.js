@@ -14,15 +14,15 @@ class App extends React.Component {
     };
   }
 
-  handleClick = (buttonName) => {
-    this.setState(calculate(this.state, buttonName));
+  handleClick = (buttonName) => {    
+    this.setState(calculate(this.state, buttonName));   
   }
 
   render() {
     return (
-      <div className="component-app">
+      <div className="component-app">       
         <Display
-          value={this.state.next || this.state.total || '0'}
+          value={this.state} 
         />
         <ButtonPanel
           clickHandler={this.handleClick}

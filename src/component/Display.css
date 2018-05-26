@@ -6,11 +6,16 @@
   flex: 0 0 auto;
   width: 100%;
 }
-
+.calc-operation{
+  height: 10px;
+  font-size: 15px !important
+}
 .component-display > div {
   font-size: 20px;
   padding: 8px 4px 0 4px;
 }
+
+
 
 @media (min-width: 200px) and (min-height: 200px) {
   .component-display > div {
