@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://ahfarmer.github.io/calculator",
   "devDependencies": {
+    "chai": "^4.1.2",
     "gh-pages": "^1.1.0",
     "react-scripts": "^1.0.17"
   },
