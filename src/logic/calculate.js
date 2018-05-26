@@ -45,21 +45,13 @@ export default function calculate(obj, buttonName) {
 
   if (buttonName === '.') {
     if (obj.next) {
+      // ignore a . if the next number already has one
       if (obj.next.includes('.')) {
         return {};
       }
       return { next: obj.next + '.' };
     }
-    if (obj.operation) {
-      return { next: '0.' };
-    }
-    if (obj.total) {
-      if (obj.total.includes('.')) {
-        return {};
-      }
-      return { total: obj.total + '.' };
-    }
-    return { total: '0.' };
+    return { next: '0.' };
   }
 
   if (buttonName === '=') {

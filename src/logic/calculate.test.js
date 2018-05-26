@@ -19,8 +19,9 @@ function expectButtons(buttons, expectation) {
   expect(pressButtons(buttons)).to.deep.equal(expectation);
 }
 
-function test(buttons, expectation) {
-  it(`buttons ${buttons.join(',')} -> ${JSON.stringify(expectation)}`, () => {
+function test(buttons, expectation, only = false) {
+  const func = only ? it.only : it;
+  func(`buttons ${buttons.join(',')} -> ${JSON.stringify(expectation)}`, () => {
     expectButtons(buttons, expectation);
   })
 }
@@ -105,6 +106,24 @@ test(['+', '2', '5'], {
 
 test(['+', '6', '+', '5', '='], {
   total: '11',
+});
+
+test(['0', '.', '4'], {
+  next: '0.4'
+});
+
+test(['.', '4'], {
+  next: '0.4'
+});
+
+test(['.', '4', '-', '.', '2'], {
+  total: '0.4',
+  next: '0.2',
+  operation: '-'
+});
+
+test(['.', '4', '-', '.', '2', '='], {
+  total: '0.2',
 });
 
 // should clear the operator when AC is pressed
