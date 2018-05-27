@@ -1,13 +1,13 @@
-import Button from './Button';
-import React from 'react';
-import PropTypes from 'prop-types';
+import Button from "./Button";
+import React from "react";
+import PropTypes from "prop-types";
 
-import './ButtonPanel.css';
+import "./ButtonPanel.css";
 
 class ButtonPanel extends React.Component {
-  handleClick = (buttonName) => {
+  handleClick = buttonName => {
     this.props.clickHandler(buttonName);
-  }
+  };
 
   render() {
     return (
