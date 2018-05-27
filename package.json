@@ -6,6 +6,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "gh-pages": "^1.1.0",
+    "prettier": "1.13.0",
     "react-scripts": "^1.1.4"
   },
   "dependencies": {
@@ -21,7 +22,7 @@
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
   },
-  "eslintConfig": {
-    "extends": "./node_modules/react-scripts/config/eslint.js"
+  "prettier": {
+    "trailingComma": "all"
   }
 }
