@@ -13,7 +13,12 @@ export default function operate(numberOne, numberTwo, operation) {
     return one.times(two).toString();
   }
   if (operation === "÷") {
-    return one.div(two).toString();
+    if (two == "0") {
+      alert('Divide by 0 error');
+      return "0";
+    } else {
+      return one.div(two).toString();
+    }
   }
   throw Error(`Unknown operation '${operation}'`);
 }
