@@ -1,35 +1,25 @@
 steps:
 
-# We don't need the git checkout step, since it's already part of the git commit trigger
-
-- name: 'gcr.io/cloud-builders/git'
-  id: 'git-checkout'
-  args: ['clone', 'https://github.com/mablhq/calculator.git', 'calc']
-  dir: 'build'
-
 # TODO push a prebuild npm image with these modules preinstalled for faster startup
 - name: 'gcr.io/cloud-builders/npm'
   id: 'npm-install'
   args: ['install']
-  dir: 'build/calc'
 
 - name: 'gcr.io/cloud-builders/npm'
   id: 'build-webapp'
   args: ['run-script', 'build']
-  dir: 'build/calc'
 
 # TODO add dynamic fragment so we can unique url and cache busting
 # TODO make webpack stop moving js/css into static path - prevents above dynamic fragment
 - name: gcr.io/cloud-builders/gsutil
-  id: 'deploy-to-gcs'
+  id: 'deploy-webapp-to-gcs'
   args: ['-m', 'rsync', '-r', '-a', 'public-read', 'build/', 'gs://mabl-demo-static-test-assets/calc/v4/' ]
-  dir: 'build/calc'
-
+    
 # Have mabl run the smoke tests
 - name: 'gcr.io/cloud-builders/curl'
-  id: 'trigger-smoke-tests'
+  id: 'trigger-mabl-smoke-tests'
   entrypoint: 'bash'
-  args: ['-c','curl -v 2 https://api-dev.mabl.com/events/deployment -u "key:$$MABL_API_KEY" -H "Content-Type:application/json" -d "{\"environment_id\":\"4Cbk2cPeqGIh8ym-33lSzw-e\",\"application_id\":\"wTmDPcGV6sy32fJxbB4UzA-a\"}"']
+  args: ['-c','curl -s https://api-dev.mabl.com/events/deployment -u "key:$$MABL_API_KEY" -H "Content-Type:application/json" -d "{\"environment_id\":\"4Cbk2cPeqGIh8ym-33lSzw-e\",\"application_id\":\"wTmDPcGV6sy32fJxbB4UzA-a\",\"plan_overrides\":{\"uri\":\"http://storage.googleapis.com/mabl-demo-static-test-assets/calc/v4/index.html\"}}"']
   secretEnv: ['MABL_API_KEY']
 
 # Store our secret keys in KMS
