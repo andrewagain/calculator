@@ -2,7 +2,7 @@
   "name": "calculator",
   "version": "0.1.0",
   "license": "MIT",
-  "homepage": "https://storage.googleapis.com/mabl-demo-static-test-assets/calc/v4/",
+  "homepage": "http://calc.mabl.com/v4/",
   "devDependencies": {
     "chai": "^4.1.2",
     "gh-pages": "^1.1.0",
