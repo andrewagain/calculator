@@ -1,6 +1,6 @@
 {
   "name": "calculator",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "license": "MIT",
   "homepage": "http://calc.mabl.com/v4/",
   "devDependencies": {
