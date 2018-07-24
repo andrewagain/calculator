@@ -13,13 +13,13 @@ steps:
 # TODO make webpack stop moving js/css into static path - prevents above dynamic fragment
 - name: gcr.io/cloud-builders/gsutil
   id: 'deploy-webapp-to-gcs'
-  args: ['-m', 'rsync', '-r', '-a', 'public-read', 'build/', 'gs://mabl-demo-static-test-assets/calc/v4/' ]
+  args: ['-m', 'rsync', '-r', '-a', 'public-read', 'build/', 'gs://calc.mabl.com/v4/' ]
     
 # Have mabl run the smoke tests
 - name: 'gcr.io/cloud-builders/curl'
   id: 'trigger-mabl-smoke-tests'
   entrypoint: 'bash'
-  args: ['-c','curl -s https://api-dev.mabl.com/events/deployment -u "key:$$MABL_API_KEY" -H "Content-Type:application/json" -d "{\"environment_id\":\"4Cbk2cPeqGIh8ym-33lSzw-e\",\"application_id\":\"wTmDPcGV6sy32fJxbB4UzA-a\",\"plan_overrides\":{\"uri\":\"http://storage.googleapis.com/mabl-demo-static-test-assets/calc/v4/index.html\"}}"']
+  args: ['-c','curl -s https://api-dev.mabl.com/events/deployment -u "key:$$MABL_API_KEY" -H "Content-Type:application/json" -d "{\"environment_id\":\"4Cbk2cPeqGIh8ym-33lSzw-e\",\"application_id\":\"wTmDPcGV6sy32fJxbB4UzA-a\",\"plan_overrides\":{\"uri\":\"http://calc.mabl.com/v4/index.html\"}}"']
   secretEnv: ['MABL_API_KEY']
 
 # Store our secret keys in KMS
