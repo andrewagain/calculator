@@ -30,7 +30,7 @@ export default function calculate(obj, buttonName) {
       if(obj.next === "0" && buttonName !== "0" && obj.total !== null)
         return { next: buttonName }
       if(obj.next)
-        return { next: obj.next  + buttonName }; //, total: obj.next + buttonName 
+        return { next: obj.next  + buttonName }; 
       return { next: buttonName };
     }
     // If there is no operation, update next and clear the value
