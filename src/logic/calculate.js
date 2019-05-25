@@ -23,21 +23,23 @@ export default function calculate(obj, buttonName) {
 
   if (isNumber(buttonName)) {
     if (buttonName === "0" && obj.next === "0") {
-      return {};
+      return { };
     }
     // If there is an operation, update next
     if (obj.operation) {
-      if (obj.next) {
-        return { next: obj.next + buttonName };
-      }
+      if(obj.next === "0" && buttonName !== "0" && obj.total !== null)
+        return { next: buttonName }
+      if(obj.next)
+        return { next: obj.next  + buttonName }; //, total: obj.next + buttonName 
       return { next: buttonName };
     }
     // If there is no operation, update next and clear the value
     if (obj.next) {
-      return {
-        next: obj.next + buttonName,
-        total: null,
-      };
+      if(obj.next !== "0")
+        return {
+          next: obj.next + buttonName,
+          total: null,
+        };
     }
     return {
       next: buttonName,
