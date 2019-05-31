@@ -34,8 +34,9 @@ export default function calculate(obj, buttonName) {
     }
     // If there is no operation, update next and clear the value
     if (obj.next) {
+      const next = obj.next === "0" ? buttonName : obj.next + buttonName;
       return {
-        next: obj.next + buttonName,
+        next,
         total: null,
       };
     }
