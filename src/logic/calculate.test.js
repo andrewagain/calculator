@@ -154,4 +154,20 @@ describe("calculate", function() {
   test(["2", "x", "2", "%"], {
     total: "0.04",
   });
+
+  //Test that pressing the multiplication or division sign multiple times should not affect the current computation
+  test(["2", "x", "x"], {
+    total: "2",
+    operation: "x"
+  });
+
+  test(["2", "÷", "÷"], {
+    total: "2",
+    operation: "÷"
+  });
+
+  test(["2", "÷", "x", "+", "-", "x"], {
+    total: "2",
+    operation: 'x'
+  });
 });
