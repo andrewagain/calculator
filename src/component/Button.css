@@ -2,6 +2,7 @@
   display: inline-flex;
   width: 25%;
   flex: 1 0 auto;
+  user-select: none;
 }
 
 .component-button.wide {
@@ -17,11 +18,23 @@
   padding: 0;
 }
 
+.component-button button:focus {
+  outline: none;
+}
+
 .component-button:last-child button {
   margin-right: 0;
+}
+
+.component-button.is-clicked button {
+  background: #bebebe;
 }
 
 .component-button.orange button {
   background-color: #f5923e;
   color: white;
+}
+
+.component-button.orange.is-clicked button {
+  background-color: #f3801e;
 }
