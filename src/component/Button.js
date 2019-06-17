@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import "./Button.css";
 
 export default class Button extends React.Component {
+
+  state = {
+    isClicked: false
+  }
+
   static propTypes = {
     name: PropTypes.string,
     orange: PropTypes.bool,
@@ -12,6 +17,14 @@ export default class Button extends React.Component {
 
   handleClick = () => {
     this.props.clickHandler(this.props.name);
+    this.setState((prevState, props) => ({
+      isClicked: !prevState.isClicked
+    }));
+    setTimeout(() => {
+      this.setState((prevState, props) => ({
+        isClicked: !prevState.isClicked
+      }));
+    }, 100);
   };
 
   render() {
@@ -19,6 +32,7 @@ export default class Button extends React.Component {
       "component-button",
       this.props.orange ? "orange" : "",
       this.props.wide ? "wide" : "",
+      this.state.isClicked ? "is-clicked": ""
     ];
 
     return (
