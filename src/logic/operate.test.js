@@ -20,6 +20,25 @@ test("test division", () => {
   expect(operate(5, 2, "÷")).toBe("2.5");
 });
 
-test("test incorrect operation", () => {
-  expect(operate(2, 4, "/")).toThrow();
+// test for error thrown
+// note: expect() should be passed code in a function for jest to catch error
+test("test unknown operation", () => {
+  expect(() => operate(2, 4, "/")).toThrowError(/Unknown/);
+});
+
+test("test negative addition", () => {
+  expect(operate(-1, -1, "+")).toBe("-2");
+});
+
+test("negative multiplication pos neg", () => {
+  expect(operate(2, -2, "x")).toBe("-4");
+});
+
+test("negative multiplication neg neg", () => {
+  expect(operate(-2, -2, "x")).toBe("4");
+});
+
+// checks for rounding using regex
+test("test division rounding", () => {
+  expect(operate(22, 7, "÷")).toMatch(/3.142857/);
 });
