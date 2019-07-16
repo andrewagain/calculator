@@ -6,7 +6,6 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "gh-pages": "^2.0.1",
-    "jshint": "^2.10.2",
     "prettier": "^1.17.1",
     "react-scripts": "^3.0.1"
   },
@@ -21,8 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "test:jshint && react-scripts test --env=jsdom",
-    "test:jshint" : "jshint hello.js",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
   },
