@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "big.js": "^5.2.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "github-fork-ribbon-css": "^0.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
