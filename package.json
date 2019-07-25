@@ -5,15 +5,26 @@
   "homepage": "http://ahfarmer.github.io/calculator",
   "devDependencies": {
     "chai": "^4.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "gh-pages": "^2.0.1",
+    "jest": "^24.8.0",
+    "jest-enzyme": "^7.0.2",
     "prettier": "^1.17.1",
     "react-scripts": "^3.0.1"
   },
   "dependencies": {
+    "@angular/core": "^8.1.1",
+    "@testing-library/react": "^8.0.4",
+    "ajv": "^6.10.1",
     "big.js": "^5.2.2",
+    "enzyme-adapter-react-15": "^1.4.0",
     "github-fork-ribbon-css": "^0.2.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
+    "sinon": "^7.3.2",
+    "testing-library": "0.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
