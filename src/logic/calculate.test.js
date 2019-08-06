@@ -170,4 +170,8 @@ describe("calculate", function() {
     total: "2",
     operation: 'x'
   });
+
+  test(["8", "÷", "0", "="], {
+    total: "Divide by 0 error",
+  });
 });
