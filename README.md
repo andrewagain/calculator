@@ -4,6 +4,8 @@ Calculator
 
 Created with *create-react-app*. See the [full create-react-app guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+[![Run on Repl.it](https://repl.it/badge/github/ahfarmer/calculator)](https://repl.it/github/ahfarmer/calculator)
+
 
 
 Try It
