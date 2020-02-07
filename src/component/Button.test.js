@@ -29,7 +29,6 @@ it("Button has correct classes with props", () => {
 
     expect(Array.from(buttonEl.classList)).toEqual(expect.arrayContaining(["component-button", "orange", "wide"]))
 
-
 });
 
 // We did not need enzyme for the previous tests.
