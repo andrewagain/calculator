@@ -20,6 +20,18 @@ export default function calculate(obj, buttonName) {
       operation: null,
     };
   }
+  
+  // isLetter()
+  function isLetter (buttonName) {
+    return /[a-zBD-Z]+/.test(buttonName)
+  }
+  if (isLetter(buttonName)) {
+    console.log(buttonName)
+    const next = obj.next;
+    return {
+      next
+    };
+  }
 
   if (isNumber(buttonName)) {
     if (buttonName === "0" && obj.next === "0") {
