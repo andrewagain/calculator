@@ -15,9 +15,13 @@ export default class App extends React.Component {
     this.setState(calculate(this.state, buttonName));
   };
 
+  handlePress = event => {
+    this.setState(calculate(this.state, event.key));
+  };
+
   render() {
     return (
-      <div className="component-app">
+      <div className="component-app" onKeyPress={this.handlePress}>
         <Display value={this.state.next || this.state.total || "0"} />
         <ButtonPanel clickHandler={this.handleClick} />
       </div>
