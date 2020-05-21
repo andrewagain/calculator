@@ -1,0 +1,21 @@
+name: integration-tests
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node13.6.0-chrome80-ff72
+      options: --user 1001
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.1.1
+      - name: Install dependencies
+        run: yarn install
+      - name: Cypress run
+        uses: cypress-io/github-action@v1.24.1
+        with:
+          install: true
+          start: npm start
+          browser: chrome
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 90

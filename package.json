@@ -5,7 +5,10 @@
   "homepage": "http://ahfarmer.github.io/calculator",
   "devDependencies": {
     "chai": "^4.2.0",
+    "cypress": "^4.6.0",
     "gh-pages": "^2.0.1",
+    "happo-cypress": "^0.2.0",
+    "happo.io": "^5.4.0",
     "prettier": "^1.17.1",
     "react-scripts": "^3.0.1"
   },
