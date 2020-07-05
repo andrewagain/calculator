@@ -15,9 +15,13 @@ import isNumber from "./isNumber";
 export default function calculate(obj, buttonName) {
   if (obj.next === "0") {
     return {
-      total: obj.total,
       next: buttonName,
-      operation: obj.operation,
+    };
+  }
+  if (buttonName === "\u232b") {
+    console.log(obj.total);
+    return {
+      next: obj.next !== null ? obj.next.slice(0, -1) : obj.total,
     };
   }
   if (buttonName === "AC") {
