@@ -13,6 +13,17 @@ import isNumber from "./isNumber";
  *   operation:String  +, -, etc.
  */
 export default function calculate(obj, buttonName) {
+  if (obj.next === "0") {
+    return {
+      next: buttonName,
+    };
+  }
+  if (buttonName === "\u232b") {
+    console.log(obj.total);
+    return {
+      next: obj.next !== null ? obj.next.slice(0, -1) : obj.total,
+    };
+  }
   if (buttonName === "AC") {
     return {
       total: null,

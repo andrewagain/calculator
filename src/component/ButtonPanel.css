@@ -12,3 +12,8 @@
   flex: 1 0 auto;
   display: flex;
 }
+
+.component-button-panel > div div:last-child button {
+  background-color: #f5923e;
+  color: white;
+}
