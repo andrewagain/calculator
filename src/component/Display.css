@@ -5,6 +5,7 @@
   font-weight: 200;
   flex: 0 0 auto;
   width: 100%;
+  overflow: auto;
 }
 
 .component-display > div {
