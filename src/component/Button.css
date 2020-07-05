@@ -2,6 +2,13 @@
   display: inline-flex;
   width: 25%;
   flex: 1 0 auto;
+  outline: none;
+}
+.component-button:hover {
+  opacity: 0.8;
+}
+.component-button:active {
+  opacity: 0.9;
 }
 
 .component-button.wide {
@@ -19,9 +26,4 @@
 
 .component-button:last-child button {
   margin-right: 0;
-}
-
-.component-button.orange button {
-  background-color: #f5923e;
-  color: white;
 }
