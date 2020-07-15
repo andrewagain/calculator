@@ -9,42 +9,35 @@ export default class ButtonPanel extends React.Component {
     clickHandler: PropTypes.func,
   };
 
+  buttonRows = [
+      ["AC", "+/-", "%", "÷"],
+      ["7", "8", "9", "x"],
+      ["4", "5", "6", "-"],
+      ["1", "2", "3", "+"],
+      ["0", ".", "="]
+  ]
+
+  refs = {
+
+  };
+
   handleClick = buttonName => {
     this.props.clickHandler(buttonName);
   };
 
+  getButtonRows(){
+      return this.buttonRows.map((buttons)=>{
+            return <div>{
+                buttons.map((button, index) => {
+                    return <Button name={button} clickHandler={this.handleClick} wide={!index && buttons.length<4} />
+            })} </div>
+      });
+  }
+
   render() {
     return (
       <div className="component-button-panel">
-        <div>
-          <Button name="AC" clickHandler={this.handleClick} />
-          <Button name="+/-" clickHandler={this.handleClick} />
-          <Button name="%" clickHandler={this.handleClick} />
-          <Button name="÷" clickHandler={this.handleClick} orange />
-        </div>
-        <div>
-          <Button name="7" clickHandler={this.handleClick} />
-          <Button name="8" clickHandler={this.handleClick} />
-          <Button name="9" clickHandler={this.handleClick} />
-          <Button name="x" clickHandler={this.handleClick} orange />
-        </div>
-        <div>
-          <Button name="4" clickHandler={this.handleClick} />
-          <Button name="5" clickHandler={this.handleClick} />
-          <Button name="6" clickHandler={this.handleClick} />
-          <Button name="-" clickHandler={this.handleClick} orange />
-        </div>
-        <div>
-          <Button name="1" clickHandler={this.handleClick} />
-          <Button name="2" clickHandler={this.handleClick} />
-          <Button name="3" clickHandler={this.handleClick} />
-          <Button name="+" clickHandler={this.handleClick} orange />
-        </div>
-        <div>
-          <Button name="0" clickHandler={this.handleClick} wide />
-          <Button name="." clickHandler={this.handleClick} />
-          <Button name="=" clickHandler={this.handleClick} orange />
-        </div>
+          {this.getButtonRows()}
       </div>
     );
   }
