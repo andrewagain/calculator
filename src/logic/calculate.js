@@ -12,13 +12,39 @@ import isNumber from "./isNumber";
  *   next:String       the next number to be operated on with the total
  *   operation:String  +, -, etc.
  */
-export default function calculate(obj, buttonName) {
+export default function calculate(obj, buttonName, onKeyPress) {
+    let btnList = ["AC", "+/-", "%", "/", "7", "8", "9", "*", "4", "5", "6", "-", "1", "2", "3", "+","0", ".", "=", "Backspace"];
+    if(!onKeyPress){
+        if(buttonName === 'x'){ //No I18N
+            buttonName = '*'; //No I18N
+        }else if(buttonName === "÷"){ //No I18N
+            buttonName = "/"; //No I18N
+        }   
+    }
+    if(btnList.indexOf(buttonName) === -1){
+        console.log('Invalid Key', buttonName);
+        return;
+        // throw Error(`Invalid key ${buttonName}`);
+    }
+
   if (buttonName === "AC") {
     return {
       total: null,
       next: null,
-      operation: null,
+      operation: null
     };
+  }
+  if(buttonName === "Backspace"){
+      let display = obj.total || obj.next;
+      if(!obj.operation && display && display !== "0"){
+          display = display.slice(0, display.length-1);
+        return {
+          total: obj.total ? display : obj.total,
+          next: obj.next? display : obj.next,
+          operation: obj.operation
+        }
+      }
+      return;
   }
 
   if (isNumber(buttonName)) {

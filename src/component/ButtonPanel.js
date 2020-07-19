@@ -17,21 +17,22 @@ export default class ButtonPanel extends React.Component {
       ["0", ".", "="]
   ]
 
-  refs = {
-
-  };
-
   handleClick = buttonName => {
     this.props.clickHandler(buttonName);
   };
-
   getButtonRows(){
-      return this.buttonRows.map((buttons)=>{
-            return <div>{
-                buttons.map((button, index) => {
-                    return <Button name={button} clickHandler={this.handleClick} wide={!index && buttons.length<4} />
+      return this.buttonRows.map((buttons, index)=>{
+            return <div key={index}>{
+                buttons.map((buttonName, index) => {
+                    return <Button name={buttonName} key={buttonName} clickHandler={this.handleClick} wide={!index && buttons.length<4} />
             })} </div>
       });
+  }
+  componentWillReceiveProps(newProps){
+        let keyPressed = newProps.keyPressed;
+        if( keyPressed!== null && keyPressed !== this.props.keyPressed){
+            this.props.clickHandler(keyPressed, true);
+        }
   }
 
   render() {
