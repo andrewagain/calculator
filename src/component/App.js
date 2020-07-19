@@ -2,6 +2,7 @@ import React from "react";
 import Display from "./Display";
 import ButtonPanel from "./ButtonPanel";
 import calculate from "../logic/calculate";
+import {isAlphaNumericKey} from '../utils/helper_methods';
 import "./App.css";
 
 export default class App extends React.Component {
@@ -16,15 +17,20 @@ export default class App extends React.Component {
     var newStates = calculate(this.state, buttonName, onKeyPress)
     if(newStates){
         newStates.keyPressed = null;
-        console.log(newStates);
         this.setState(newStates);
+    }else{
+        this.setState({
+            keyPressed:null
+        });
     }
   };
 
   handleKeyDown = (orgEvent)=>{
-    this.setState({
-        keyPressed: orgEvent.key
-    });
+      if(isAlphaNumericKey(orgEvent)){
+            this.setState({
+                keyPressed: orgEvent.key
+            });
+      }
   };
 
   render() {

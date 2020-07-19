@@ -2,6 +2,7 @@ import Big from "big.js";
 
 import operate from "./operate";
 import isNumber from "./isNumber";
+import playSound from "../utils/playsound";
 
 /**
  * Given a button name and a calculator data object, return an updated
@@ -22,9 +23,8 @@ export default function calculate(obj, buttonName, onKeyPress) {
         }   
     }
     if(btnList.indexOf(buttonName) === -1){
-        console.log('Invalid Key', buttonName);
+        playSound('error');
         return;
-        // throw Error(`Invalid key ${buttonName}`);
     }
 
   if (buttonName === "AC") {
