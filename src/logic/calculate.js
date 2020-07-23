@@ -2,133 +2,141 @@ import Big from "big.js";
 
 import operate from "./operate";
 import isNumber from "./isNumber";
-
 /**
- * Given a button name and a calculator data object, return an updated
- * calculator data object.
- *
- * Calculator data object contains:
- *   total:String      the running total
- *   next:String       the next number to be operated on with the total
- *   operation:String  +, -, etc.
- */
-export default function calculate(obj, buttonName) {
-  if (buttonName === "AC") {
-    return {
-      total: null,
-      next: null,
-      operation: null,
-    };
-  }
+  Calculator data object contains:
+  numStack - Numbers that are yet to be processed are pushed to stack.
+  operStack - Operators that are yet to be processed are pushed to stack.
+  lastNumPressed - Last number pressed by the user.
+  lastOperPressed - Last operaator pressed by the user.
+  lastPressed : "number" | "operator" - Whether last pressed
+  displayValue: The value displayed in the display area.
+*/
+export default function calculate(obj, key) {
+  let numStack = obj.numStack || [];
+  let operStack = obj.operStack || [];
+  let lastNumPressed = obj.lastNumPressed;
+  let lastOperPressed = obj.lastOperPressed;
+  let lastPressed = obj.lastPressed;
+  let displayValue = obj.displayValue;
 
-  if (isNumber(buttonName)) {
-    if (buttonName === "0" && obj.next === "0") {
-      return {};
-    }
-    // If there is an operation, update next
-    if (obj.operation) {
-      if (obj.next) {
-        return { next: obj.next + buttonName };
+  let processSingleOperation = ()=>{
+    let secondNum = numStack.pop();
+    let firstNum = numStack.pop();
+    let result = operate(firstNum, secondNum, operStack.pop());
+    numStack.push(parseFloat(result));
+    displayValue = result;
+  }
+  
+  let processStack = (processAll)=>{
+    if(numStack.length>1){
+      if(lastPressed === "operator"){
+        operStack.pop();
       }
-      return { next: buttonName };
-    }
-    // If there is no operation, update next and clear the value
-    if (obj.next) {
-      const next = obj.next === "0" ? buttonName : obj.next + buttonName;
-      return {
-        next,
-        total: null,
-      };
-    }
-    return {
-      next: buttonName,
-      total: null,
-    };
-  }
-
-  if (buttonName === "%") {
-    if (obj.operation && obj.next) {
-      const result = operate(obj.total, obj.next, obj.operation);
-      return {
-        total: Big(result)
-          .div(Big("100"))
-          .toString(),
-        next: null,
-        operation: null,
-      };
-    }
-    if (obj.next) {
-      return {
-        next: Big(obj.next)
-          .div(Big("100"))
-          .toString(),
-      };
-    }
-    return {};
-  }
-
-  if (buttonName === ".") {
-    if (obj.next) {
-      // ignore a . if the next number already has one
-      if (obj.next.includes(".")) {
-        return {};
+      if(processAll){
+        while(numStack.length>1){
+          processSingleOperation(); 
+        }
+      }else{
+        processSingleOperation(); 
       }
-      return { next: obj.next + "." };
     }
-    return { next: "0." };
+    return displayValue;
   }
-
-  if (buttonName === "=") {
-    if (obj.next && obj.operation) {
-      return {
-        total: operate(obj.total, obj.next, obj.operation),
-        next: null,
-        operation: null,
-      };
-    } else {
-      // '=' with no operation, nothing to do
-      return {};
+  let validCalcKeys = ["AC", "+/-", "%", "÷", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "+","0", ".", "=", "Backspace"];
+  if(validCalcKeys.includes(key)){
+    if(key === "AC"){
+      numStack = [];
+      operStack = [];
+      lastNumPressed = null;
+      lastOperPressed = null;
+      lastPressed = null;
+      displayValue = null;
+      lastPressed = key;
+    }else if(key === "="){
+      processStack(true);
+      lastPressed = key;
+    }else if(key === "+/-"){
+      lastNumPressed = parseFloat(displayValue) * -1;
+      displayValue = String(lastNumPressed);
+      numStack.pop();
+      numStack.push(lastNumPressed);
+      lastPressed = key;
+    }else if(key === "Backspace"){
+      /** Last character is removed when backspace is pressed */
+      displayValue = displayValue.slice(0, displayValue.length-1);
+      lastNumPressed = parseFloat(displayValue || 0);
+      numStack.pop();
+      numStack.push(lastNumPressed);
+      lastPressed = "number";
+    }else{
+      let isDecimalPt = key === ".";
+      if(isNumber(key) && (!isDecimalPt || !displayValue.includes("."))){
+        if(lastPressed === "number"){
+          displayValue = (displayValue === "0" && !isDecimalPt ? "" : displayValue) + key;
+          /* Since we are concating to the previous number, we need to replace the last pushed value */
+          numStack.pop();
+        }else{
+          /* On pressing (= (or) +/- (or) AC), the previous numbers are omitted.
+          */
+          if(lastPressed === "=" || lastPressed === "+/-"){
+            numStack=[];
+          }
+          displayValue = isDecimalPt ? "0." : key;
+        }
+        lastNumPressed = parseFloat(displayValue || 0);
+        numStack.push(lastNumPressed)
+        lastPressed = "number";
+      }else{
+        if(key === '%'){
+          if(displayValue && displayValue !== "0"){
+            if(lastPressed === 'operator'){
+              operStack.pop();
+            }
+            let updatedNum = Big(displayValue).div(Big("100"));
+            numStack.pop();
+            numStack.push(updatedNum);
+            displayValue = String(updatedNum);
+            lastPressed = "number";
+          }
+        }else{
+          if(lastPressed){
+            if(lastPressed === "operator"){
+              /**
+               * If lastpressed key is an operator, it has to be replaced.
+              */
+              operStack.pop();
+            }else{
+              /**
+               * Behavior implemented from Mac calculator.
+               * 1. If last pressed operator precedence is equalto / morethan the current operators hierachy, the previous operations are calculated before proceeding with the current one.
+               * 2. (x|÷|%) has high precedence than (+|-)
+              */
+              let getPrecedence = (operator)=> ["x", "÷"].includes(operator);
+              let currentOperPrecedence = getPrecedence(key);
+              let prevOperPrecedence = getPrecedence(lastOperPressed);
+              if ((currentOperPrecedence === prevOperPrecedence) || (currentOperPrecedence<prevOperPrecedence)){
+                processStack();
+                lastNumPressed = parseFloat(displayValue);
+              }
+            }
+          }
+          if(!numStack.length){
+            numStack.push(0);
+          }
+          operStack.push(key); 
+          lastPressed = "operator";
+        } 
+        lastOperPressed = key;
+      }
     }
   }
 
-  if (buttonName === "+/-") {
-    if (obj.next) {
-      return { next: (-1 * parseFloat(obj.next)).toString() };
-    }
-    if (obj.total) {
-      return { total: (-1 * parseFloat(obj.total)).toString() };
-    }
-    return {};
+  return{
+    numStack,
+    operStack,
+    lastOperPressed,
+    lastNumPressed,
+    lastPressed,
+    displayValue: displayValue || "0"
   }
-
-  // Button must be an operation
-
-  // When the user presses an operation button without having entered
-  // a number first, do nothing.
-  // if (!obj.next && !obj.total) {
-  //   return {};
-  // }
-
-  // User pressed an operation button and there is an existing operation
-  if (obj.operation) {
-    return {
-      total: operate(obj.total, obj.next, obj.operation),
-      next: null,
-      operation: buttonName,
-    };
-  }
-
-  // no operation yet, but the user typed one
-
-  // The user hasn't typed a number yet, just save the operation
-  if (!obj.next) {
-    return { operation: buttonName };
-  }
-
-  // save the operation and shift 'next' into 'total'
-  return {
-    total: obj.next,
-    next: null,
-    operation: buttonName,
-  };
 }
