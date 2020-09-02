@@ -25,3 +25,34 @@
   background-color: #f5923e;
   color: white;
 }
+
+.component-button button:focus {
+  outline: none;
+}
+
+/* Ripple effect */
+
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+
+.ripple:hover {
+  background: #d4d4d4 radial-gradient(circle, transparent 1%, #d4d4d4 1%) center/15000%;
+}
+
+.ripple:active {
+  background-color: #e0e0e0;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.component-button.orange .ripple:hover {
+  background: #f38d33 radial-gradient(circle, transparent 1%, #f38d33 1%) center/15000%;
+}
+
+.component-button.orange .ripple:active {
+  background-color: #f5923e;
+  background-size: 100%;
+  transition: background 0s;
+}
