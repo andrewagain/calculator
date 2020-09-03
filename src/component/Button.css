@@ -17,6 +17,10 @@
   padding: 0;
 }
 
+.component-button img {
+  width: 80px;
+}
+
 .component-button:last-child button {
   margin-right: 0;
 }

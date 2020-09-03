@@ -23,12 +23,12 @@ export default class Button extends React.Component {
 
     return (
       <div className={className.join(" ").trim()}>
-        <button
-          className="ripple"
-          onClick={this.handleClick}
-          onKeyPress={event => event.preventDefault()}
-        >
-          {this.props.name}
+        <button className="ripple" onClick={this.handleClick}>
+          {this.props.name !== "\u232b" ? (
+            this.props.name
+          ) : (
+            <img src="/images/backspace.png" alt="back" />
+          )}
         </button>
       </div>
     );

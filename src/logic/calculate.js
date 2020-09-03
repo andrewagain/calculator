@@ -21,6 +21,19 @@ export default function calculate(obj, buttonName) {
     };
   }
 
+  if (buttonName === "\u232b") {
+    let display = obj.total || obj.next;
+    if (!obj.operation && display && display !== "0") {
+      display = display.slice(0, display.length - 1);
+      return {
+        total: obj.total ? display : obj.total,
+        next: obj.next ? display : obj.next,
+        operation: obj.operation,
+      };
+    }
+    return {};
+  }
+
   if (isNumber(buttonName)) {
     if (buttonName === "0" && obj.next === "0") {
       return {};
