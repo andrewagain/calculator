@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Button.css";
-import backspace from "../images/backspace.png";
 
 export default class Button extends React.Component {
   static propTypes = {
@@ -25,11 +24,7 @@ export default class Button extends React.Component {
     return (
       <div className={className.join(" ").trim()}>
         <button className="ripple" onClick={this.handleClick}>
-          {this.props.name !== "\u232b" ? (
-            this.props.name
-          ) : (
-            <img src={backspace} alt="back" />
-          )}
+          {this.props.name}
         </button>
       </div>
     );
