@@ -29,7 +29,7 @@ jobs:
     - run: npm test
     - name: Deploy to GH Pages
       run: |
-        git config --global user.email {{secret.GIT_EMAIL}}
-        git config --global user.name {{secret.USERNAME}}
-        git remote set-url origin https://{{secret.SECRET_TOKEN}}@github.com/AhmedELShafaie/calculator.git
+        git config --global user.email {{secrets.GIT_EMAIL}}
+        git config --global user.name {{secrets.USERNAME}}
+        git remote set-url origin https://{{secrets.SECRET_TOKEN}}@github.com/AhmedELShafaie/calculator.git
         npm run deploy
