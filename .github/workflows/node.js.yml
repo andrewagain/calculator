@@ -26,9 +26,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - run: yarn
+    - run: yarn build 
+    - run: yarn  test --watchAll=false
     - name: Deploy to GH Pages
       run: |
         git config --global user.email ${{secrets.GIT_EMAIL}}
