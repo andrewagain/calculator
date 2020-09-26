@@ -23,7 +23,8 @@ jobs:
           script: |
            mkdir -p ~/new_calculator
            cd /home/ubuntu/lockr/github
-           git clone git@github.com:AhmedELShafaie/calculator.git mycal-$(date +%m%d%Y--%H-%M-%S)          
+           mv mycal mycal--$(date +%m%d%Y--%H-%M-%S)
+           git clone git@github.com:AhmedELShafaie/calculator.git mycal          
 
 
 
