@@ -17,7 +17,7 @@ jobs:
       - name: run ssh deploy
         uses: appleboy/ssh-action@master
         with:
-          host: $host
+          host: 3.93.192.55
           username: $username
           key: ${{secrets.SSH_KEY}}
           script: |
