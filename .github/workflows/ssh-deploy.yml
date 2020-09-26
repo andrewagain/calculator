@@ -18,7 +18,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: 3.93.192.55
-          username: $username
+          username: ubuntu
           key: ${{secrets.SSH_KEY}}
           script: |
             mkdir ~/`date`
