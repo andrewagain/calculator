@@ -1,0 +1,23 @@
+name: use ssh
+
+on: push
+
+env:
+  FIRST_NAME: Ahmed
+  host: 3.93.192.55
+
+jobs:
+  build:
+    runs-on: ubuntu:latest
+    steps:
+      - name: Run ls
+        uses: fifsky/ssh-action@master
+        with: 
+          command: |
+            cd /tmp
+            ls -a
+            echo "env_var: $FIRST_NAME"
+          host: $host
+          user: ubuntu
+          key: ${{secrets.SSH_KEY}}
+          args: "-tt -vvv"
