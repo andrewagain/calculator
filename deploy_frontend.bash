@@ -10,12 +10,7 @@ ENV_PATH=$BASE/env
 
 #cd ~
 echo "Start deploy lockrmail frontend\n"
-cd $SRC
-
-git checkout master
-git fetch -p
-git pull
-
+cd $SRC/mycal
 
 
 echo "Release new version, prepare directory, etc.\n"
