@@ -15,7 +15,7 @@ cd $SRC/mycal
 
 echo "Release new version, prepare directory, etc.\n"
 sudo mkdir -p $BASE/$DATE
-rsync -a $SRC/* $BASE/$DATE >>/dev/null 2>&1
+rsync -a $SRC/mycal/* $BASE/$DATE/ >>/dev/null 2>&1
 
 
 echo "Create symlynk\n"
