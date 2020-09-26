@@ -24,9 +24,8 @@ jobs:
            mkdir -p ~/new_calculator
            cd /home/ubuntu/lockr/github
            git clone git@github.com:AhmedELShafaie/calculator.git mycal
-           cd mycal
-           yarn build
-           
+          
+
 
 
 
