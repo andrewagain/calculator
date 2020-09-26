@@ -21,7 +21,7 @@ jobs:
           username: ubuntu
           key: ${{secrets.SSH_KEY}}
           script: |
-            mkdir ~/`date`
-            cd ~/`date`
+            mkdir ~/$(date +%m-%d-%y)
+            cd ~/$(date +%m-%d-%y)
             touch a.yaml
 
