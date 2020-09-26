@@ -24,7 +24,8 @@ jobs:
            mkdir -p ~/new_calculator
            cd /home/ubuntu/lockr/github
            mv mycal mycal--$(date +%m%d%Y--%H-%M-%S)
-           git clone git@github.com:AhmedELShafaie/calculator.git mycal          
+           git clone git@github.com:AhmedELShafaie/calculator.git mycal   
+           bash -x /home/ubuntu/deploy_frontend.bash        
 
 
 

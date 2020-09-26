@@ -37,5 +37,3 @@ echo "recording deploy date\n"
 sudo touch $LIVENOW/deploy.txt
 sudo chmod 0777 $LIVENOW/deploy.txt
 echo $(date) >> "$LIVENOW/deploy.txt"
-
-echo  "\n<< Deploy Done >>\n"
