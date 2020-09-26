@@ -10,7 +10,7 @@ ENV_PATH=$BASE/env
 
 #cd ~
 echo "Start deploy lockrmail frontend\n"
-cd $SRC/mycal
+cd $SRC/mycal-$(date +%m%d%Y)
 
 
 echo "Release new version, prepare directory, etc.\n"
