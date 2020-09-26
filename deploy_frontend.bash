@@ -29,7 +29,8 @@ echo "POSITION at $BASE/$DATE\n"
 cd $BASE/$DATE
 
 #Prepare the build
-yarn build
+sudo yarn 
+sudo yarn build
 
 
 echo "recording deploy date\n"
