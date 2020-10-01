@@ -2,7 +2,7 @@
   "name": "calculator",
   "version": "0.1.0",
   "license": "MIT",
-  "homepage": "http://ahfarmer.github.io/calculator",
+  "homepage": "https://tommysg.github.io/simple-calculator/",
   "devDependencies": {
     "chai": "^4.2.0",
     "gh-pages": "^2.0.1",
@@ -20,6 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "prettier": {
