@@ -36,3 +36,16 @@ jobs:
         git config --global user.name ${{secrets.USERNAME}}
         git remote set-url origin https://${{secrets.SECRET_TOKEN}}@github.com/AhmedELShafaie/calculator.git
         npm run deploy
+        
+    - name: slack
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        author_name: Integration Test # default: 8398a7@action-slack
+        fields: repo,commit,message,author # default: repo,commit
+        mention: here
+        if_mention: failure,cancelled
+      env:
+        GITHUB_TOKEN: ${{ github.token }} # optional
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
+      if: always() # Pick up events even if the job fails or is canceled. 
