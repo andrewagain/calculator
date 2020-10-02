@@ -4,6 +4,7 @@
   "license": "MIT",
   "homepage": "http://ahfarmer.github.io/calculator",
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "chai": "^4.2.0",
     "eslint": "^7.10.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -24,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "./node_modules/eslint/bin/eslint.js .",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
