@@ -5,9 +5,31 @@
   font-weight: 200;
   flex: 0 0 auto;
   width: 100%;
+  overflow: auto;
 }
 
-.component-display > div {
+.component-display::-webkit-scrollbar {
+  height: 10px;
+}
+
+.component-display::-webkit-scrollbar-track {
+  background: #858694;
+}
+
+.component-display::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.component-display::-webkit-scrollbar-thumb:hover {
+  background: rgb(71, 71, 71);
+}
+
+.component-display>div {
   font-size: 2.5rem;
   padding: 0.2rem 0.7rem 0.1rem 0.5rem;
 }

@@ -5,7 +5,7 @@ import "./Button.css";
 export default class Button extends React.Component {
   static propTypes = {
     name: PropTypes.string,
-    orange: PropTypes.bool,
+    theme: PropTypes.string,
     wide: PropTypes.bool,
     clickHandler: PropTypes.func,
   };
@@ -17,13 +17,15 @@ export default class Button extends React.Component {
   render() {
     const className = [
       "component-button",
-      this.props.orange ? "orange" : "",
+      this.props.theme ? this.props.theme : "",
       this.props.wide ? "wide" : "",
     ];
 
     return (
       <div className={className.join(" ").trim()}>
-        <button onClick={this.handleClick}>{this.props.name}</button>
+        <button className="ripple" onClick={this.handleClick}>
+          {this.props.name}
+        </button>
       </div>
     );
   }
