@@ -7,6 +7,7 @@ const keyCodes = {
   DIV: 191,
   PERCENT: 53,
   DOT: 190,
+  COLOR: 67,
 };
 
 const keyHandle = function(event) {

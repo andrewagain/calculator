@@ -60,3 +60,37 @@
   background-size: 100%;
   transition: background 0s;
 }
+
+/* red color theme */
+
+.component-button.red button {
+  background-color: rgb(226, 47, 47);
+  color: white;
+}
+
+.component-button.red .ripple:hover {
+  background: rgb(224, 35, 35) radial-gradient(circle, transparent 1%, rgb(224, 35, 35) 1%) center/15000%;
+}
+
+.component-button.red .ripple:active {
+  background-color: rgb(224, 35, 35);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+/*purple color theme */
+
+.component-button.purple button {
+  background-color: rgb(169, 75, 206);
+  color: white;
+}
+
+.component-button.purple .ripple:hover {
+  background: rgb(162, 56, 204) radial-gradient(circle, transparent 1%, rgb(162, 56, 204) 1%) center/15000%;
+}
+
+.component-button.purple .ripple:active {
+  background-color: rgb(162, 56, 204);
+  background-size: 100%;
+  transition: background 0s;
+}
