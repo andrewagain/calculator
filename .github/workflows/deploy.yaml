@@ -29,8 +29,9 @@ jobs:
 
       - name: Build Deps
         if: steps.cache-node.outputs.cache-hit != 'true'
-        run: npm install --silent 
-
+        run: |
+          npm install --silent 
+          npm audit fix
 
       - name: Compile app
         run: npm run build
