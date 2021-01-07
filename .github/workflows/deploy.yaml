@@ -16,7 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: list objects  
+        env:
+          ostype: ${{ runner.os }}
         run: |
          pwd
          ls -l 
-         echo $ {{ runner.os }}
+         echo $ostype
