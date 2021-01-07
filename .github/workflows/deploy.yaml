@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: list objects  
         run: |
-          pwd
-          ls -l 
-               
+         pwd
+         ls -l 
