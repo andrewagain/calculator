@@ -20,7 +20,8 @@ jobs:
           node-version: 14.0
       - uses: actions/cache@v2.1.3
         with: 
-          path: prime_numbers
+          path: node_modules
+          #Linux-node-c560bf6e152f21dea7495e46ba4ddcc8c5fc54904fd4688f7946cf46974beb7e
           key: ${{ runner.os}}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os}}-node-
