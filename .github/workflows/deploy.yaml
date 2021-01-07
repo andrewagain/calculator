@@ -18,7 +18,21 @@ jobs:
       - uses: actions/setup-node@v2
         with: 
           node-version: 14.0
-      - run: | 
-          node -v 
-          pwd
-          
+      - uses: actions/cache@v2.1.3
+        with: 
+          path: prime_numbers
+          key: ${{ runner.os}}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os}}-node-
+
+
+      - name: Build Deps
+        if: steps.cache-node.outputs.cache-hit != "true"
+        run: npm install --silent 
+
+
+      - name: Compile app
+        run: npm run build
+
+       
+
