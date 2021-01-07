@@ -19,3 +19,4 @@ jobs:
         run: |
          pwd
          ls -l 
+         echo $ {{ runner.os }}
