@@ -1,0 +1,51 @@
+name: Deploy react project
+on:
+  push:
+    branches:
+      - "master"
+  pull_request:
+    branches:
+      - "master"
+
+
+
+jobs:
+  build:
+    name: Build phase
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with: 
+          node-version: 14.0
+      - uses: actions/cache@v2.1.3
+        with: 
+          path: node_modules
+          #Linux-node-c560bf6e152f21dea7495e46ba4ddcc8c5fc54904fd4688f7946cf46974beb7e
+          key: ${{ runner.os}}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os}}-node-
+
+
+      - name: Build Deps
+        if: steps.cache-node.outputs.cache-hit != 'true'
+        run: |
+          npm install --silent 
+          npm audit fix
+
+      - name: Compile app
+        run: npm run build
+
+
+      - name: deploy gh-pages
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: master # The branch the action should deploy to.
+          FOLDER: build # The folder the action should deploy.
+          CLEAN: true
+
+
+
+
+
