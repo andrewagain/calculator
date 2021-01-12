@@ -1,3 +1,4 @@
+![Node.js CI](https://github.com/AhmedELShafaie/calculator/workflows/Node.js%20CI/badge.svg)
 Calculator
 ---
 <img src="Logotype primary.png" width="60%" height="60%" />
