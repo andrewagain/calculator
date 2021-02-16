@@ -12,7 +12,14 @@ import isNumber from "./isNumber";
  *   next:String       the next number to be operated on with the total
  *   operation:String  +, -, etc.
  */
-export default function calculate(obj, buttonName) {
+
+ interface CalculateProps {
+  total?: null | string,
+  next?: null | string,
+  operation?: null | string,
+ }
+
+export default function calculate(obj: CalculateProps, buttonName: string): CalculateProps {
   if (buttonName === "AC") {
     return {
       total: null,
