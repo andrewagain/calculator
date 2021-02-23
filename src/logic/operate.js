@@ -13,10 +13,10 @@ export default function operate(numberOne, numberTwo, operation) {
     return one.times(two).toString();
   }
   if (operation === "÷") {
-    if (two === "0") {
+    if (two.toString() === "0") {
       alert("Divide by 0 error");
       return "0";
-    } else {
+    } else {    
       return one.div(two).toString();
     }
   }
