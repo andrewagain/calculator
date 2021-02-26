@@ -50,12 +50,15 @@ export default function calculate(obj, buttonName) {
   if (buttonName === "%") {
     if (obj.operation && obj.next) {
       const result = operate(obj.total, obj.next, obj.operation);
+      const nextInCalculation = obj.next[0] === "-" ? "(" + obj.next + ")" : obj.next;
+      const calculation = "(" + obj.calculation + nextInCalculation + ")" + buttonName;
       return {
         total: Big(result)
           .div(Big("100"))
           .toString(),
         next: null,
         operation: null,
+        calculation,
       };
     }
     if (obj.next) {
@@ -63,6 +66,15 @@ export default function calculate(obj, buttonName) {
         next: Big(obj.next)
           .div(Big("100"))
           .toString(),
+        calculation: obj.next + buttonName,
+      };
+    }
+    if (obj.total) {
+      return {
+        total: Big(obj.total)
+          .div(Big("100"))
+          .toString(),
+        calculation: "(" + obj.calculation + ")" + buttonName,
       };
     }
     return {};
@@ -81,11 +93,13 @@ export default function calculate(obj, buttonName) {
 
   if (buttonName === "=") {
     if (obj.next && obj.operation) {
+      const nextInCalculation = obj.next[0] === "-" ? "(" + obj.next + ")" : obj.next;
+      const calculation = obj.calculation + nextInCalculation;
       return {
         total: operate(obj.total, obj.next, obj.operation),
         next: null,
         operation: null,
-        calculation: obj.calculation + obj.next
+        calculation,
       };
     } else {
       // '=' with no operation, nothing to do
@@ -122,11 +136,13 @@ export default function calculate(obj, buttonName) {
         calculation,
       };
     }
+    const nextInCalculation = obj.next[0] === "-" ? "(" + obj.next + ")" : obj.next;
+    const calculation = obj.calculation + nextInCalculation + buttonName;
     return {
       total: operate(obj.total, obj.next, obj.operation),
       next: null,
       operation: buttonName,
-      calculation: obj.calculation + obj.next + buttonName,
+      calculation,
     };
   }
 
