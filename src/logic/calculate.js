@@ -64,6 +64,13 @@ export default function calculate(obj, buttonName) {
           .toString(),
       };
     }
+    if (obj.total) {
+      return {
+        total: Big(obj.total)
+          .div(Big("100"))
+          .toString(),
+      };
+    }
     return {};
   }
 
