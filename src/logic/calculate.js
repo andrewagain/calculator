@@ -18,6 +18,7 @@ export default function calculate(obj, buttonName) {
       total: null,
       next: null,
       operation: null,
+      calculation: null,
     };
   }
 
@@ -84,6 +85,7 @@ export default function calculate(obj, buttonName) {
         total: operate(obj.total, obj.next, obj.operation),
         next: null,
         operation: null,
+        calculation: obj.calculation + obj.next
       };
     } else {
       // '=' with no operation, nothing to do
@@ -111,10 +113,20 @@ export default function calculate(obj, buttonName) {
 
   // User pressed an operation button and there is an existing operation
   if (obj.operation) {
+    if (!obj.next) {
+      const calculation = obj.calculation.slice(0, obj.calculation.length - 1) + buttonName;
+      return {
+        total: operate(obj.total, obj.next, obj.operation),
+        next: null,
+        operation: buttonName,
+        calculation,
+      };
+    }
     return {
       total: operate(obj.total, obj.next, obj.operation),
       next: null,
       operation: buttonName,
+      calculation: obj.calculation + obj.next + buttonName,
     };
   }
 
@@ -122,7 +134,10 @@ export default function calculate(obj, buttonName) {
 
   // The user hasn't typed a number yet, just save the operation
   if (!obj.next) {
-    return { operation: buttonName };
+    return {
+      operation: buttonName,
+      calculation: obj.calculation + buttonName,
+    };
   }
 
   // save the operation and shift 'next' into 'total'
@@ -130,5 +145,6 @@ export default function calculate(obj, buttonName) {
     total: obj.next,
     next: null,
     operation: buttonName,
+    calculation: obj.next + buttonName,
   };
 }
