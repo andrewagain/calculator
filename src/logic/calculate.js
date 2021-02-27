@@ -152,11 +152,11 @@ export default function calculate(obj, buttonName) {
   if (!obj.next) {
     return {
       operation: buttonName,
-      calculation: obj.calculation + buttonName,
+      calculation: Number(obj.total) + buttonName,
     };
   }
 
-  // save the operation and shift 'next' into 'total'
+  // save the operation and shift 'next' into 'total'  
   return {
     total: obj.next,
     next: null,
