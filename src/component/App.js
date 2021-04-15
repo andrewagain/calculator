@@ -4,6 +4,25 @@ import ButtonPanel from "./ButtonPanel";
 import calculate from "../logic/calculate";
 import "./App.css";
 
+import {
+  Provider,
+  Context,
+  ErrorBoundary,
+  useRollbar,
+  useRollbarCaptureEvent,
+  LEVEL_INFO,
+  useRollbarPerson,
+  useContext,
+  RollbarContext,
+  historyContext
+} from '@rollbar/react';
+
+const rollbarConfig = {
+  accessToken: process.env.REACT_APP_ACCESS_TOKEN,
+  captureUncaught: true,
+  captureUnhandledRejections: true
+}
+
 export default class App extends React.Component {
   state = {
     total: null,
@@ -17,10 +36,12 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="component-app">
-        <Display value={this.state.next || this.state.total || "0"} />
-        <ButtonPanel clickHandler={this.handleClick} />
-      </div>
+      <Provider config={rollbarConfig}>
+        <div className="component-app">
+          <Display value={this.state.next || this.state.total || "0"} />
+          <ButtonPanel clickHandler={this.handleClick} />
+        </div>
+      </Provider>
     );
   }
 }

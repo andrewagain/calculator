@@ -9,6 +9,9 @@ coverage
 # production
 build
 
+# tokens
+.env
+
 # misc
 .DS_Store
 npm-debug.log
