@@ -15,6 +15,10 @@
   margin: 0 1px 0 0;
   flex: 1 0 auto;
   padding: 0;
+  transition: 0.3s;
+}
+.component-button button:hover {
+ background-color: bisque;
 }
 
 .component-button:last-child button {
@@ -24,4 +28,8 @@
 .component-button.orange button {
   background-color: #f5923e;
   color: white;
+  transition: 0.3s;
+}
+.component-button.orange button:hover {
+  color: black;
 }
