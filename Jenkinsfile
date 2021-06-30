@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "minfy/sample-app"
+    registry = "riteshk0398/calculator"
     registryCredential = 'dockerhub'
     KUBECONFIG="$JENKINS_HOME/.kube/config2"
   }
@@ -10,9 +10,9 @@ pipeline {
       steps{
         sh "printenv"
         
-        sh "docker build -t riteshk03/emoji-search:$BUILD_ID-$BRANCH_NAME ." 
-       // sh "docker run -dp 80:80 riteshk03/emoji-search:$BUILD_ID"
-        sh "docker push riteshk03/emoji-search:$BUILD_ID-$BRANCH_NAME"
+        sh "docker build -t riteshk03/calculator:$BUILD_ID-$BRANCH_NAME ." 
+        sh "docker run -dp 80:80 riteshk03/calculator:$BUILD_ID"
+        sh "docker push riteshk03/calculator:$BUILD_ID-$BRANCH_NAME"
       }
     }
     stage('Creating Deployment') {
@@ -22,13 +22,10 @@ pipeline {
                 
                 if [[ $GIT_BRANCH == "development" ]]
                 then
-                    kubectl set image deployment/jenkins-app nginx=riteshk03/emoji-search:$BUILD_ID-$BRANCH_NAME -n $BRANCH_NAME
-                elif [[ $GIT_BRANCH == "testing" ]]
-                then
-                    kubectl set image deployment/jenkins-app nginx=riteshk03/emoji-search:$BUILD_ID-$BRANCH_NAME -n $BRANCH_NAME
+                    kubectl set image deployment/aes-app nginx=riteshk03/calculator:$BUILD_ID-$BRANCH_NAME -n $BRANCH_NAME
                 elif [[ $GIT_BRANCH == "master" ]]
                 then
-                    kubectl set image deployment/jenkins-app nginx=riteshk03/emoji-search:$BUILD_ID-$BRANCH_NAME -n production
+                    kubectl set image deployment/aes-app nginx=riteshk03/calculator:$BUILD_ID-$BRANCH_NAME -n production
                 fi         
             '''
       }
