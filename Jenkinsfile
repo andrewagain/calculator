@@ -11,7 +11,7 @@ pipeline {
         sh "printenv"
         
         sh "docker build -t riteshk03/calculator:$BUILD_ID-$BRANCH_NAME ." 
-        sh "docker run -dp 80:80 riteshk03/calculator:$BUILD_ID-$BRANCH_NAME"
+        //sh "docker run -dp 80:80 riteshk03/calculator:$BUILD_ID-$BRANCH_NAME"
         sh "docker push riteshk03/calculator:$BUILD_ID-$BRANCH_NAME"
       }
     }
