@@ -28,7 +28,9 @@ export default function calculate(obj, buttonName) {
     // If there is an operation, update next
     if (obj.operation) {
       if (obj.next) {
-        return { next: obj.next + buttonName };
+        const next = obj.next === "0" ? buttonName : obj.next + buttonName;
+
+        return { next: next };
       }
       return { next: buttonName };
     }
