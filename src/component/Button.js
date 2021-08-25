@@ -9,10 +9,26 @@ export default class Button extends React.Component {
     wide: PropTypes.bool,
     clickHandler: PropTypes.func,
   };
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.renderButton= this.renderButton.bind(this);
+  }
 
-  handleClick = () => {
+  componentDidMount() {
+    this.setState({currName: this.props.name})
+  }
+
+  handleClick() {
     this.props.clickHandler(this.props.name);
   };
+
+  renderButton() {
+    const {currName} = this.state;
+    return (
+      <button onClick={this.handleClick}>{currName}</button>
+    );
+  }
 
   render() {
     const className = [
@@ -23,7 +39,7 @@ export default class Button extends React.Component {
 
     return (
       <div className={className.join(" ").trim()}>
-        <button onClick={this.handleClick}>{this.props.name}</button>
+        {this.renderButton()}
       </div>
     );
   }
