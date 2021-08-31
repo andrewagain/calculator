@@ -2,7 +2,7 @@ pipeline {
   environment {
     registry = "riteshk0398/calculator"
     registryCredential = 'dockerhub'
-    KUBECONFIG="$ /.kube/config2"
+    // KUBECONFIG="$ /.kube/config2"
   }
   agent any
   stages {
