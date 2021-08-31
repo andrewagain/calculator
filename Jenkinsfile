@@ -11,9 +11,9 @@ pipeline {
       steps{
         sh "printenv"
         
-        sh "docker build -t riteshk03/calculator:$BUILD_ID-$BRANCH_NAME ." 
+        sh "docker build -t riteshk03/calculator1:$BUILD_ID-$BRANCH_NAME ." 
         //sh "docker run -dp 80:80 riteshk03/calculator:$BUILD_ID-$BRANCH_NAME"
-        sh "docker push riteshk03/calculator:$BUILD_ID-$BRANCH_NAME"
+        sh "docker push riteshk03/calculator1:$BUILD_ID-$BRANCH_NAME"
       }
     }
     stage('Creating Deployment') {
@@ -23,10 +23,10 @@ pipeline {
                 
                 if [[ $GIT_BRANCH == "development" ]]
                 then
-                    kubectl set image deployment/aes-app httpd=riteshk03/calculator:$BUILD_ID-$BRANCH_NAME -n $BRANCH_NAME
+                    kubectl set image deployment/aes-app httpd=riteshk03/calculator1:$BUILD_ID-$BRANCH_NAME -n $BRANCH_NAME
                 elif [[ $GIT_BRANCH == "master" ]]
                 then
-                    kubectl set image deployment/aes-app httpd=riteshk03/calculator:$BUILD_ID-$BRANCH_NAME -n production
+                    kubectl set image deployment/aes-app httpd=riteshk03/calculator1:$BUILD_ID-$BRANCH_NAME -n production
                 fi         
             '''
       }
