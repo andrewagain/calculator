@@ -23,10 +23,10 @@ pipeline {
                 
                 if [[ $GIT_BRANCH == "development" ]]
                 then
-                    kubectl set image deployment/aes-app httpd=riteshk03/calculator:$BUILD_ID-$BRANCH_NAME -n $BRANCH_NAME
+                    kubectl set image deployment/aes-app nginx=riteshk03/calculator:$BUILD_ID-$BRANCH_NAME -n $BRANCH_NAME
                 elif [[ $GIT_BRANCH == "master" ]]
                 then
-                    kubectl set image deployment/aes-app httpd=riteshk03/calculator:$BUILD_ID-$BRANCH_NAME -n production
+                    kubectl set image deployment/aes-app nginx=riteshk03/calculator:$BUILD_ID-$BRANCH_NAME -n production
                 fi         
             '''
       }
