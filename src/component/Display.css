@@ -5,9 +5,35 @@
   font-weight: 200;
   flex: 0 0 auto;
   width: 100%;
+  direction: rtl;
+  overflow: auto;
 }
+
+/* width */
+::-webkit-scrollbar {
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 8px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e0e0e0; 
+  height: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f5923e; 
+}
+
 
 .component-display > div {
   font-size: 2.5rem;
   padding: 0.2rem 0.7rem 0.1rem 0.5rem;
 }
+
