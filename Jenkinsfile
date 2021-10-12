@@ -24,7 +24,7 @@ pipeline {
                 if [[ $GIT_BRANCH == "development" ]]
                 then
                     kubectl set image deployment/aes-app nginx=riteshk03/calculator1:$BUILD_ID-$BRANCH_NAME -n $BRANCH_NAME
-                    elif [[ $GIT_BRANCH == "misbah-testing" ]]
+                    elif [[ $GIT_BRANCH == "DEV-3-deployment-in-dockerswarm" ]]
                 then
                     kubectl set image deployment/aes-app nginx=riteshk03/calculator1:$BUILD_ID-$BRANCH_NAME -n jira
                 elif [[ $GIT_BRANCH == "master" ]]
