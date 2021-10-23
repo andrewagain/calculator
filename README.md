@@ -23,4 +23,4 @@ Install
 Usage
 ---
 
-`npm start`
+`npm start`or `yarn start`
