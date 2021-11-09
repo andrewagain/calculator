@@ -24,3 +24,8 @@ Usage
 ---
 
 `npm start`
+
+---
+# Rebuilt with react hook
+
+Since it's 2021, I would like to rebuilt this app with react hook.
