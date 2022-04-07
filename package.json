@@ -5,9 +5,11 @@
   "homepage": "http://ahfarmer.github.io/calculator",
   "devDependencies": {
     "chai": "^4.2.0",
+    "cypress": "^9.5.3",
     "gh-pages": "^2.0.1",
     "prettier": "^1.17.1",
-    "react-scripts": "^3.0.1"
+    "react-scripts": "^3.0.1",
+    "typescript": "^4.6.3"
   },
   "dependencies": {
     "big.js": "^5.2.2",
@@ -20,7 +22,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "cypress:run": "node_modules/cypress/bin/cypress run",
+    "cypress:open": "node_modules/cypress/bin/cypress open"
   },
   "prettier": {
     "trailingComma": "all"
