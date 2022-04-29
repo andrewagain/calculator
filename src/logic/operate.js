@@ -13,7 +13,7 @@ export default function operate(numberOne, numberTwo, operation) {
     return one.times(two).toString();
   }
   if (operation === "÷") {
-    if (two === "0") {
+    if (two.cmp(0) == 0) {      //Used cmp function to compare the value
       alert("Divide by 0 error");
       return "0";
     } else {
