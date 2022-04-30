@@ -3,7 +3,6 @@ import Display from "./Display";
 import ButtonPanel from "./ButtonPanel";
 import calculate from "../logic/calculate";
 import "./App.css";
-import useKeypress from "react-use-keypress";
 
 
 export default class App extends React.Component {
@@ -41,7 +40,6 @@ export default class App extends React.Component {
   }
 
   handleClick = buttonName => {
-    console.log(buttonName);
     this.setState(calculate(this.state, buttonName));
   };
 
@@ -50,7 +48,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="component-app" ref={this.inputRef} onKeyDown={this.keyHandler} tabIndex="0">
-        <Display value={this.state.next || this.state.total || "0"} clickHandler={this.keyHandler}/>
+        <Display value={this.state.next || this.state.total || "0"}/>
         <ButtonPanel clickHandler={this.handleClick} />
       </div>
     );
