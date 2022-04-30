@@ -13,6 +13,7 @@ export default class ButtonPanel extends React.Component {
     this.props.clickHandler(buttonName);
   };
 
+
   render() {
     return (
       <div className="component-button-panel">
