@@ -1,5 +1,5 @@
 {
-  "name": "calculator",
+  "name": "calculator-converted-to-functional-react",
   "version": "0.1.0",
   "license": "MIT",
   "homepage": "http://ahfarmer.github.io/calculator",
@@ -36,5 +36,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "keywords": [],
+  "description": ""
 }
