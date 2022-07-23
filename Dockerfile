@@ -3,7 +3,7 @@ FROM node:18-alpine
 
 # Add group and user to avoid root user usage for security reasons.
 RUN addgroup calgroup
-RUN adduser caluser calgroup
+RUN adduser caluser --ingroup calgroup
 
 # copy source code and set up work directory
 RUN mkdir /calculator
