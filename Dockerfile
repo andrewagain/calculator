@@ -1,9 +1,9 @@
 # Base image
-FROM node:18-alpine
+FROM node:16-alpine
 
 # Add group and user to avoid root user usage for security reasons.
 RUN addgroup calgroup
-RUN adduser caluser --ingroup calgroup
+RUN adduser -D caluser calgroup
 
 # copy source code and set up work directory
 RUN mkdir /calculator
