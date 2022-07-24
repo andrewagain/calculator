@@ -11,11 +11,11 @@ workflows:
       - aws-ecr/build-and-push-image:
           repo: "calculator"
           # using commit information as tag
-          tag: "${CIRCLE_SHA1}"
+          tag: "latest"
 
       - aws-ecs/deploy-service-update:
           # making sure deployment is run only after successful image build and push
           requires:
             - aws-ecr/build-and-push-image
-          family: "${AWS_RESOURCE_NAME_PREFIX}-service"
-          cluster: "${AWS_RESOURCE_NAME_PREFIX}-cluster"
+          family: "calculator"
+          cluster: "calculator"
