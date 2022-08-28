@@ -5,9 +5,10 @@
   "homepage": "http://ahfarmer.github.io/calculator",
   "devDependencies": {
     "chai": "^4.2.0",
+    "eslint-loader": "^4.0.2",
     "gh-pages": "^2.0.1",
     "prettier": "^1.17.1",
-    "react-scripts": "^3.0.1"
+    "react-scripts": "^5.0.1"
   },
   "dependencies": {
     "big.js": "^5.2.2",
