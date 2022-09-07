@@ -15,15 +15,6 @@ body {
   height: 100%;
 }
 
-body .github-fork-ribbon:before {
-  background-color: #333;
-}
-
-@media screen and (max-width: 400px) {
-  .github-fork-ribbon {
-    display: none;
-  }
-}
 
 @media (min-width: 400px) and (min-height: 400px) {
   html {
