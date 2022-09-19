@@ -12,7 +12,7 @@ import isNumber from "./isNumber";
  *   next:String       the next number to be operated on with the total
  *   operation:String  +, -, etc.
  */
-export default function calculate(obj, buttonName) {
+function calculate(obj, buttonName) {
   if (buttonName === "AC") {
     return {
       total: null,
@@ -132,3 +132,5 @@ export default function calculate(obj, buttonName) {
     operation: buttonName,
   };
 }
+
+export default calculate;
